@@ -17,9 +17,13 @@ def translate(word):
     # proper noune may have title or capitalise format
     elif word.title() in data.keys():
         return data[word.title()]
-        
+
     elif word.capitalize() in data.keys():
         return data[word.capitalize()]
+    
+    # handling abbreviations
+    elif word.upper()in data.keys():
+        return data[word.upper()]
 
     # possible words can be tuple or list anything
     elif len(get_close_matches(word,data.keys())) > 0 :
@@ -36,10 +40,6 @@ def translate(word):
         
     else:
         return "No such word found!"
-
-
-
-
 
 
 word=input('\nEnter word: ')
